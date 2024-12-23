@@ -38,3 +38,29 @@
 - 모든 인접한 두 원소를 비교하여 정렬하는 알고리즘
 - 시간 복잡도 : **O(n^2)** (최악, 평균, 최선의 경우 모두)
 - 공간 복잡도 : **O(n)**
+
+### 코틀린 sortedWith() 함수
+- **sortedWith()** 함수를 사용하여 **Comparator** 를 사용한 정렬 가능
+- **compareBy()** 함수를 사용하여 여러 기준으로 정렬 가능
+  ```kotlin
+    val list = listOf("one", "two", "three", "four", "five")
+    val sortedList = list.sortedWith(compareBy ({ it.length }, { it }))
+    println(sortedList)  // [one, two, four, five, three]
+  ```
+  
+### 중복제거 후 정렬
+- **distinct()** 함수를 사용하여 중복 제거 후 정렬 가능
+  ```kotlin
+    val list = listOf(1, 2, 3, 4, 5, 1, 2, 3, 4, 5)
+    val sortedList = list.distinct().sorted()
+    println(sortedList) // [1, 2, 3, 4, 5]
+  ```
+
+- **toMutableSet()** 함수를 사용하여 중복 제거 후 정렬 가능
+  ```kotlin
+    val sortedList = list.toMutableSet().sorted()
+  ```
+
+- **distinct()** 함수는 내부적으로 **toMutableSet()** 함수를 사용
+  
+  <img src="./image/distinct.png" width="400" alt="">
